@@ -76,7 +76,7 @@
 3. Настройки:
    - **Name**: `maxpersonal-effect-frontend`
    - **Build Command**: `echo "Static site - no build needed"`
-   - **Publish Directory**: `./` (корень проекта, с точкой и слэшем)
+   - **Publish Directory**: `.` (точка - корень проекта, где находятся index.html, js/, styles/)
 
 4. После создания, откройте файл `js/api.js` в вашем репозитории
 5. Измените `API_BASE_URL` на адрес вашего API:

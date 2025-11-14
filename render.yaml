@@ -23,7 +23,7 @@ services:
   - type: static
     name: maxpersonal-effect-frontend
     buildCommand: echo "Static site - no build needed"
-    staticPublishPath: ./
+    staticPublishPath: .
 
   # PostgreSQL Database
   - type: pg
