@@ -75,8 +75,8 @@
 2. Подключите ваш GitHub репозиторий
 3. Настройки:
    - **Name**: `maxpersonal-effect-frontend`
-   - **Build Command**: (оставьте пустым или `echo "No build needed"`)
-   - **Publish Directory**: `.` (корень проекта)
+   - **Build Command**: `echo "Static site - no build needed"`
+   - **Publish Directory**: `./` (корень проекта, с точкой и слэшем)
 
 4. После создания, откройте файл `js/api.js` в вашем репозитории
 5. Измените `API_BASE_URL` на адрес вашего API:

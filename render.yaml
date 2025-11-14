@@ -23,8 +23,8 @@ services:
   - type: web
     name: maxpersonal-effect-frontend
     env: static
-    buildCommand: echo "No build needed"
-    staticPublishPath: .
+    buildCommand: echo "Static site - no build needed"
+    staticPublishPath: ./
     routes:
       - type: rewrite
         source: /*
