@@ -17,6 +17,7 @@ docker-compose up -d
 - **Backend API**: http://localhost:8000
 - **API Docs**: http://localhost:8000/docs
 - **PostgreSQL**: localhost:5432
+- **Max Bot**: запущен и работает в фоне
 
 ### Вариант 2: Отдельные контейнеры
 
@@ -42,6 +43,19 @@ docker run -d -p 3000:80 \
   maxpersonal-effect-frontend
 ```
 
+#### Запуск бота
+
+```bash
+cd bot
+docker build -t maxpersonal-effect-bot .
+docker run -d \
+  -e BOT_TOKEN=your_bot_token \
+  -e APP_URL=http://localhost:3000 \
+  -e API_URL=http://localhost:8000/api \
+  --name maxpersonal-effect-bot \
+  maxpersonal-effect-bot
+```
+
 ## 📋 Команды Docker Compose
 
 ```bash
@@ -63,6 +77,7 @@ docker-compose build --no-cache
 # Перезапуск конкретного сервиса
 docker-compose restart backend
 docker-compose restart frontend
+docker-compose restart bot
 
 # Просмотр статуса
 docker-compose ps
@@ -70,23 +85,23 @@ docker-compose ps
 
 ## 🔧 Настройка переменных окружения
 
-Отредактируйте `docker-compose.yml` для изменения настроек:
-
-```yaml
-environment:
-  - DATABASE_URL=postgresql://user:password@db:5432/dbname
-  - ALLOWED_ORIGINS=http://localhost:3000,https://yourdomain.com
-  - DEBUG=false
-```
-
-Или создайте файл `.env` в корне проекта:
+Отредактируйте `docker-compose.yml` для изменения настроек или создайте файл `.env` в корне проекта:
 
 ```env
+# Backend
 DATABASE_URL=postgresql://maxpersonal_user:maxpersonal_password@db:5432/maxpersonal_effect
 ALLOWED_ORIGINS=http://localhost:3000
 DEBUG=false
 POSTGRES_PASSWORD=maxpersonal_password
+
+# Bot
+BOT_TOKEN=f9LHodD0cOJG8_jxMdYQq9URP1b9wuy2hAJsqicXd7ya7lqAX52Jb-6BY4nf0I6feJ6EovqJMf1FrsCOJTCf
+APP_URL=http://localhost:3000
+BOT_NAME=t628_hakaton_bot
+BOT_NICKNAME=Хакатон 628
 ```
+
+Docker Compose автоматически подхватит переменные из `.env` файла.
 
 И обновите `docker-compose.yml`:
 
@@ -194,6 +209,7 @@ docker-compose logs -f
 # Конкретный сервис
 docker-compose logs -f backend
 docker-compose logs -f frontend
+docker-compose logs -f bot
 docker-compose logs -f db
 ```
 
@@ -202,6 +218,9 @@ docker-compose logs -f db
 ```bash
 # Бэкенд
 docker-compose exec backend bash
+
+# Бот
+docker-compose exec bot bash
 
 # База данных
 docker-compose exec db psql -U maxpersonal_user -d maxpersonal_effect
@@ -243,9 +262,12 @@ backend:
 ├── Dockerfile.frontend      # Образ для фронтенда (Nginx)
 ├── nginx.conf              # Конфигурация Nginx
 ├── .dockerignore           # Игнорируемые файлы
-└── backend/
-    ├── Dockerfile          # Образ для бэкенда (FastAPI)
-    └── .dockerignore       # Игнорируемые файлы бэкенда
+├── backend/
+│   ├── Dockerfile          # Образ для бэкенда (FastAPI)
+│   └── .dockerignore       # Игнорируемые файлы бэкенда
+└── bot/
+    ├── Dockerfile          # Образ для бота Max
+    └── .dockerignore       # Игнорируемые файлы бота
 ```
 
 ## ⚠️ Важные замечания

@@ -35,6 +35,24 @@ services:
     networks:
       - maxpersonal-network
 
+  # Max Bot
+  bot:
+    build:
+      context: ./bot
+      dockerfile: Dockerfile
+    container_name: maxpersonal-effect-bot
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN:-f9LHodD0cOJG8_jxMdYQq9URP1b9wuy2hAJsqicXd7ya7lqAX52Jb-6BY4nf0I6feJ6EovqJMf1FrsCOJTCf}
+      - APP_URL=${APP_URL:-http://localhost:3000}
+      - API_URL=http://backend:8000/api
+      - BOT_NAME=${BOT_NAME:-t628_hakaton_bot}
+      - BOT_NICKNAME=${BOT_NICKNAME:-Хакатон 628}
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - maxpersonal-network
+
   # PostgreSQL Database
   db:
     image: postgres:15-alpine
