@@ -18,11 +18,16 @@
 
 3. **Настройте переменные окружения**
    - После создания сервисов, откройте **API сервис** → **Environment**
+   - **Где найти имя фронтенд сервиса:**
+     - В панели Render найдите ваш **Static Site** сервис (фронтенд)
+     - Имя сервиса указано вверху страницы (например: `maxpersonal-effect-frontend`)
+     - Или посмотрите URL сервиса: `https://maxpersonal-effect-frontend.onrender.com`
+     - Имя сервиса — это часть перед `.onrender.com`
    - Добавьте переменную:
      ```
-     ALLOWED_ORIGINS=https://your-frontend-name.onrender.com
+     ALLOWED_ORIGINS=https://maxpersonal-effect-frontend.onrender.com
      ```
-   - Замените `your-frontend-name` на имя вашего фронтенд сервиса
+     (Замените `maxpersonal-effect-frontend` на реальное имя вашего сервиса)
 
 4. **Готово!** 🎉
    - API будет доступен по адресу: `https://your-api-name.onrender.com`
@@ -43,7 +48,8 @@
    - **Plan**: Free (или Starter для продакшена)
 
 5. Добавьте переменные окружения:
-   - `ALLOWED_ORIGINS` = `https://your-frontend-name.onrender.com` (укажите после создания фронтенда)
+   - `ALLOWED_ORIGINS` = `https://maxpersonal-effect-frontend.onrender.com` 
+     (Имя сервиса можно найти в панели Render: откройте Static Site сервис и посмотрите его URL)
    - `DEBUG` = `false`
 
 6. Нажмите **Create Web Service**
@@ -84,31 +90,52 @@
 
 После создания обоих сервисов:
 
-1. Откройте **API сервис** → **Environment**
-2. Обновите `ALLOWED_ORIGINS`:
+1. **Найдите имя фронтенд сервиса:**
+   - В панели Render откройте ваш **Static Site** сервис (фронтенд)
+   - Имя сервиса указано вверху страницы
+   - Или посмотрите URL: `https://ИМЯ-СЕРВИСА.onrender.com`
+   - Имя — это часть перед `.onrender.com`
+
+2. Откройте **API сервис** → **Environment**
+3. Обновите `ALLOWED_ORIGINS`:
    ```
-   ALLOWED_ORIGINS=https://your-frontend-name.onrender.com
+   ALLOWED_ORIGINS=https://maxpersonal-effect-frontend.onrender.com
    ```
-3. Нажмите **Save Changes**
-4. Render автоматически перезапустит сервис
+   (Замените на реальное имя вашего фронтенд сервиса)
+4. Нажмите **Save Changes**
+5. Render автоматически перезапустит сервис
 
 ## 📝 Обновление API URL во фронтенде
 
 Если вы используете отдельные домены для API и фронтенда:
 
-1. Откройте `js/api.js`
-2. Измените:
+1. **Найдите имя API сервиса:**
+   - В панели Render откройте ваш **Web Service** (API)
+   - Имя сервиса указано вверху страницы
+   - Или посмотрите URL: `https://ИМЯ-API-СЕРВИСА.onrender.com`
+
+2. Откройте `js/api.js`
+3. Измените:
    ```javascript
-   const API_BASE_URL = 'https://your-api-name.onrender.com/api';
+   const API_BASE_URL = 'https://maxpersonal-effect-api.onrender.com/api';
    ```
-3. Закоммитьте изменения
-4. Render автоматически обновит фронтенд
+   (Замените на реальное имя вашего API сервиса)
+4. Закоммитьте изменения
+5. Render автоматически обновит фронтенд
 
 ## ✅ Проверка работы
 
-1. **API Health Check**: `https://your-api-name.onrender.com/health`
-2. **API Docs**: `https://your-api-name.onrender.com/docs` (если DEBUG=true)
-3. **Frontend**: `https://your-frontend-name.onrender.com`
+1. **API Health Check**: `https://maxpersonal-effect-api.onrender.com/health`
+   (Замените на имя вашего API сервиса)
+2. **API Docs**: `https://maxpersonal-effect-api.onrender.com/docs` (если DEBUG=true)
+3. **Frontend**: `https://maxpersonal-effect-frontend.onrender.com`
+   (Замените на имя вашего фронтенд сервиса)
+
+**Где найти имена сервисов:**
+- Откройте панель Render
+- В списке сервисов найдите нужный
+- Имя указано вверху страницы сервиса
+- Или посмотрите URL сервиса — имя это часть перед `.onrender.com`
 
 ## 🔄 Обновление приложения
 
