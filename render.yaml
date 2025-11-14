@@ -31,7 +31,7 @@ services:
         destination: /index.html
 
   # PostgreSQL Database
-  - type: pspg
+  - type: pg
     name: maxpersonal-effect-db
     plan: free
     databaseName: maxpersonal_effect
