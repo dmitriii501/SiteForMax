@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  # Backend API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: maxpersonal-effect-api
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://maxpersonal_user:maxpersonal_password@db:5432/maxpersonal_effect
+      - ALLOWED_ORIGINS=http://localhost:3000,http://localhost:80
+      - DEBUG=false
+    volumes:
+      - ./backend/data:/app/data  # Для SQLite (если используется)
+    depends_on:
+      - db
+    restart: unless-stopped
+    networks:
+      - maxpersonal-network
+
+  # Frontend
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: maxpersonal-effect-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - maxpersonal-network
+
+  # PostgreSQL Database
+  db:
+    image: postgres:15-alpine
+    container_name: maxpersonal-effect-db
+    environment:
+      - POSTGRES_DB=maxpersonal_effect
+      - POSTGRES_USER=maxpersonal_user
+      - POSTGRES_PASSWORD=maxpersonal_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - maxpersonal-network
+
+volumes:
+  postgres_data:
+
+networks:
+  maxpersonal-network:
+    driver: bridge
+

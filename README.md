@@ -64,6 +64,20 @@ npx http-server -p 8080
 
 **Подробная инструкция:** См. файл [RENDER_DEPLOY.md](RENDER_DEPLOY.md)
 
+### Запуск через Docker
+
+**Локальный запуск с Docker Compose:**
+
+```bash
+docker-compose up -d
+```
+
+Приложение будет доступно:
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:8000
+
+**Подробная инструкция:** См. файл [DOCKER.md](DOCKER.md)
+
 ## Функциональность
 
 ### ✅ Список дел
