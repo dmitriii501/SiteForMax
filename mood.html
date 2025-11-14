@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трекер настроения</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <a href="index.html" class="logo-btn" aria-label="Главная">
+                <span>Г</span>
+            </a>
+            <nav class="sidebar-nav">
+                <a href="todo.html" class="nav-btn" data-tooltip="Список дел">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                </a>
+                <a href="goals.html" class="nav-btn" data-tooltip="Трекер целей">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="8" r="7"></circle>
+                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                    </svg>
+                </a>
+                <a href="habits.html" class="nav-btn" data-tooltip="Конструктор привычек">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                </a>
+                <a href="mood.html" class="nav-btn active" data-tooltip="Трекер настроения">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                        <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                        <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                    </svg>
+                </a>
+                <a href="reports.html" class="nav-btn" data-tooltip="Отчёты и аналитика">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="page">
+                <div class="page-header">
+                    <h1>Трекер настроения</h1>
+                    <p>Отслеживайте своё ежедневное эмоциональное состояние</p>
+                </div>
+
+                <div class="mood-container">
+                    <div class="mood-calendar">
+                        <h3>Выбрать дату</h3>
+                        <div class="calendar" id="mood-calendar">
+                            <!-- Календарь будет добавляться динамически -->
+                        </div>
+                        <div class="mood-legend">
+                            <p>Шкала настроения:</p>
+                            <div class="legend-item">
+                                <div class="color-dot very-bad"></div>
+                                <span>Очень плохо</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="color-dot bad"></div>
+                                <span>Плохо</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="color-dot normal"></div>
+                                <span>Нормально</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="color-dot good"></div>
+                                <span>Хорошо</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="color-dot excellent"></div>
+                                <span>Отлично</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mood-selection">
+                        <div class="mood-question">
+                            <h3>Как вы себя чувствуете сегодня?</h3>
+                            <p id="current-date">воскресенье, 9 ноября 2025 г.</p>
+                            <div class="mood-scale">
+                                <button class="mood-option" data-value="1">
+                                    <span>😢</span>
+                                    <span>Очень плохо</span>
+                                </button>
+                                <button class="mood-option" data-value="2">
+                                    <span>😟</span>
+                                    <span>Плохо</span>
+                                </button>
+                                <button class="mood-option" data-value="3">
+                                    <span>😐</span>
+                                    <span>Нормально</span>
+                                </button>
+                                <button class="mood-option" data-value="4">
+                                    <span>😊</span>
+                                    <span>Хорошо</span>
+                                </button>
+                                <button class="mood-option" data-value="5">
+                                    <span>😄</span>
+                                    <span>Отлично</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="emotions-selection">
+                            <h3>Какие эмоции вы испытываете?</h3>
+                            <p>Выберите все подходящие варианты</p>
+                            <div class="emotions-grid" id="emotions-grid">
+                                <!-- Эмоции будут добавляться динамически -->
+                            </div>
+                            <div class="selected-emotions" id="selected-emotions">
+                                <p>Выбранные эмоции:</p>
+                                <div id="emotions-list"></div>
+                            </div>
+                        </div>
+
+                        <div class="mood-summary" id="mood-summary">
+                            <h3>Сводка на сегодня</h3>
+                            <div class="summary-content">
+                                <p>Настроение: <span id="summary-mood">-</span></p>
+                                <p>Эмоции: <span id="summary-emotions-count">0</span> выбрано</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/mood.js"></script>
+</body>
+</html>
